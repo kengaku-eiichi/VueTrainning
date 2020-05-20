@@ -1,6 +1,6 @@
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'こんにちは！'
+        pSize: '40px'
     }
 })
