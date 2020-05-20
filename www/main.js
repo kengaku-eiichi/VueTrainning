@@ -1,6 +1,6 @@
 var app = new Vue({
     el: '#app',
     data: {
-        stock: 10
+        price: 1280
     }
 })
