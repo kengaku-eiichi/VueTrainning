@@ -1,6 +1,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        message_en: 'Hello!',
+        message_ja: 'こんにちは！',
+        lang: 'ja'
     }
 })
