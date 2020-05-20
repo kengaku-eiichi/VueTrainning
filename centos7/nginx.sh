@@ -7,6 +7,6 @@ yum info installed nginx || {
     mkdir -p /vagrant/etc/nginx
     cp /etc/nginx/nginx.conf /vagrant/etc/nginx/nginx.conf.org
     cp -pr /etc/nginx/conf.d /vagrant/etc/nginx/
-    cp /vagrant/etc/nginx/conf.d/default.conf /vagrant/etc/nginx/conf.d/default.conf
 }
-systemctl start nginx.service
+\cp -f /vagrant/etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+systemctl restart nginx.service
