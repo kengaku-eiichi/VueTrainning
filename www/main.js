@@ -1,19 +1,20 @@
 var app = new Vue({
     el: '#app',
     data: {
-        width: window.innerWidth,
-        height: window.innerHeight
+        point: {
+            x: 0, y: 0
+        }
     },
     created: function () {
-        addEventListener('resize', this.resizeHandler);
+        addEventListener('mousemove', this.mousemoveHandler);
     },
     beforeDestroy: function () {
-        removeEventListener('resize', this.resizeHandler);
+        removeEventListener('mousemove', this.mousemoveHandler);
     },
     methods: {
-        resizeHandler: function (e) {
-            this.width = e.target.innerWidth;
-            this.height = e.target.innerHeight;
+        mousemoveHandler: function (e) {
+            this.point.x = e.clientX;
+            this.point.y = e.clientY;
         }
     },
 })
