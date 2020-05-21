@@ -9,7 +9,7 @@
 
 <body>
     <div id="app">
-        {{price}}円 <span v-show="price < 1000">セール実施中！</span>
+        {{price|number_format}}円 <span v-show="price < 1000">セール実施中！</span>
     </div>
     <script src="https://jp.vuejs.org/js/vue.js"></script>
     <script src="/main.js"></script>
