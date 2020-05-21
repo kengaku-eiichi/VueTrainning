@@ -1,11 +1,19 @@
 var app = new Vue({
     el: '#app',
     data: {
-        stock: 10
+        width: window.innerWidth,
+        height: window.innerHeight
+    },
+    created: function () {
+        addEventListener('resize', this.resizeHandler);
+    },
+    beforeDestroy: function () {
+        removeEventListener('resize', this.resizeHandler);
     },
     methods: {
-        onDeleteItem: function () {
-            this.stock--;
+        resizeHandler: function (e) {
+            this.width = e.target.innerWidth;
+            this.height = e.target.innerHeight;
         }
     },
 })
