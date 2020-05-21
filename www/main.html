@@ -9,9 +9,16 @@
 
 <body>
     <div id="app">
-        <p>ケーキはお好きですか？：{{answer}}</p>
-        <input id="cake" type="checkbox" v-model="answer" true-value="はい" false-value="いいえ">
-        <label for="cake">チェックしてください。</label>
+        <p>ご注文をお選びください：{{selection}}</p>
+        <label>
+            <input type="checkbox" v-model="answer" value="ケーキ">ケーキ
+        </label>
+        <label>
+            <input type="checkbox" v-model="answer" value="紅茶">紅茶
+        </label>
+        <label>
+            <input type="checkbox" v-model="answer" value="コーヒー">コーヒー
+        </label>
     </div>
     <script src="https://jp.vuejs.org/js/vue.js"></script>
     <script src="/main.js"></script>

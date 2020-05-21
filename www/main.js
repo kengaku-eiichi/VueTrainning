@@ -1,6 +1,11 @@
 var app = new Vue({
     el: '#app',
     data: {
-        answer: 'はい'
+        answer: []
+    },
+    computed: {
+        selection: function () {
+            return this.answer.join()
+        }
     }
 })
