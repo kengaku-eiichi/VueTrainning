@@ -9,11 +9,9 @@ var app = new Vue({
             this.stock--
         }
     },
-    watch: {
-        stock: function (newStock, oldStock) {
-            if (newStock == 0) {
-                this.message = '売り切れ'
-            }
+    computed: {
+        statusMessage: function (newStock, oldStock) {
+            return this.stock == 0 ? '売り切れ' : ''
         }
     }
 })
