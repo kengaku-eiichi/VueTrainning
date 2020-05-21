@@ -1,20 +1,19 @@
 var app = new Vue({
     el: '#app',
     data: {
-        point: {
-            x: 0, y: 0
-        }
-    },
-    created: function () {
-        addEventListener('mousemove', this.mousemoveHandler);
-    },
-    beforeDestroy: function () {
-        removeEventListener('mousemove', this.mousemoveHandler);
+        message: '',
+        stock: 10
     },
     methods: {
-        mousemoveHandler: function (e) {
-            this.point.x = e.clientX;
-            this.point.y = e.clientY;
+        onDeleteItem: function () {
+            this.stock--
         }
     },
+    watch: {
+        stock: function (newStock, oldStock) {
+            if (newStock == 0) {
+                this.message = '売り切れ'
+            }
+        }
+    }
 })
