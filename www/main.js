@@ -1,11 +1,12 @@
 var app = new Vue({
     el: '#app',
     data: {
-        category: []
-    },
-    computed: {
-        selectedCategory: function () {
-            return this.category.length > 0 ? this.category.join() : ''
-        }
+        answer: '',
+        options: [
+            { code: 'ans1', label: '初めて' },
+            { code: 'ans2', label: '週１回以上' },
+            { code: 'ans3', label: '月２回以上' },
+            { code: 'ans4', label: '半年に１回' },
+        ]
     }
 })
