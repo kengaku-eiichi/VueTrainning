@@ -1,12 +1,17 @@
 var app = new Vue({
     el: '#app',
     data: {
-        answer: '',
-        options: [
-            { code: 'ans1', label: '初めて' },
-            { code: 'ans2', label: '週１回以上' },
-            { code: 'ans3', label: '月２回以上' },
-            { code: 'ans4', label: '半年に１回' },
-        ]
+        arrival_date: null
+    },
+    created: function () {
+        this.arrival_date = this.formatDate(new Date)
+    },
+    methods: {
+        formatDate: function (dt) {
+            var y = dt.getFullYear();
+            var m = ('00' + (dt.getMonth() + 1)).slice(-2);
+            var d = ('00' + dt.getDate()).slice(-2);
+            return y + '-' + m + '-' + d;
+        }
     }
 })
