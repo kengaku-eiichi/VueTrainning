@@ -9,8 +9,10 @@
 
 <body>
     <div id="app">
-        調べたい年：<input type="text" v-model="year"><br>
-        {{year}}年は{{isUrudoshi ? 'うるう年です':'うるう年ではありません'}}
+        <div v-show="show">
+            <p>now1: "{{now1()}}"</p>
+            <p>now2: "{{now2}}"</p>
+        </div>
     </div>
     <script src="https://jp.vuejs.org/js/vue.js"></script>
     <script src="/main.js"></script>

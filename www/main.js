@@ -1,15 +1,16 @@
 var app = new Vue({
     el: '#app',
     data: {
-        year: (new Date).getFullYear()
+        show: true
+    },
+    methods: {
+        now1: function () {
+            return (new Date).toLocaleString();
+        }
     },
     computed: {
-        isUrudoshi: function () {
-            if ((this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0) {
-                return true;
-            } else {
-                return false
-            }
+        now2: function () {
+            return (new Date).toLocaleString();
         }
     }
 })
