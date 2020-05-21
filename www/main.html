@@ -9,8 +9,9 @@
 
 <body>
     <div id="app">
-        <textarea>{{message}}</textarea>
-        <pre>入力内容：{{message}}</pre>
+        <p>ケーキはお好きですか？：{{answer}}</p>
+        <input id="cake" type="checkbox" v-model="answer" true-value="はい" false-value="いいえ">
+        <label for="cake">チェックしてください。</label>
     </div>
     <script src="https://jp.vuejs.org/js/vue.js"></script>
     <script src="/main.js"></script>
