@@ -4,7 +4,6 @@ Vue.filter('number_format', function (val) {
 var app = new Vue({
     el: '#app',
     data: {
-        count: 0,
         showSaleItem: false,
         showDelvFree: false,
         sortOrder: 1,
@@ -24,6 +23,15 @@ var app = new Vue({
                 : this.showSaleItem ? product.isSale
                     : this.showDelvFree ? product.delv == 0
                         : true;
+        }
+    },
+    computed: {
+        count: function () {
+            var cnt = 0;
+            for (var i = 0; i < this.products.length; i++) {
+                if (this.showExpression(this.products[i])) cnt++;
+            }
+            return cnt;
         }
     }
 });
