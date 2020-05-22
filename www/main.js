@@ -12,55 +12,43 @@ var nodeItemsOrg = nodeApp.querySelectorAll('.item');
 function onCheckChanged(e) {
     var nodeItems = nodeApp.querySelectorAll('.item');
     var nodeCount = nodeApp.querySelector('.count');
-    var count = nodeItems.length;
 
+    var showExpression = nodeCheckbox[0].checked && nodeCheckbox[1].checked ? function (nodeItem) {
+        return isSaleItem(nodeItem) && isDelvFreeItem(nodeItem);
+    }
+        : nodeCheckbox[0].checked ? isSaleItem
+            : nodeCheckbox[1].checked ? isDelvFreeItem
+                : function (nodeItem) { return true; };
+
+    var count = 0;
     for (var i = 0; i < nodeItems.length; i++) {
-        showNode(nodeItems[i]);
-    }
-
-    if (nodeCheckbox[0].checked) {
-        for (var i = 0; i < nodeItems.length; i++) {
-            if (!isSaleItem(nodeItems[i])) {
-                hideNode(nodeItems[i]);
-                count--;
-            }
+        if (showExpression(nodeItems[i])) {
+            showNode(nodeItems[i]);
+            count++;
+        } else {
+            hideNode(nodeItems[i]);
         }
     }
 
-    if (nodeCheckbox[1].checked) {
-        for (var i = 0; i < nodeItems.length; i++) {
-            if (!isDelvFreeItem(nodeItems[i])) {
-                hideNode(nodeItems[i]);
-                count--;
-            }
-        }
-    }
     nodeCount.textContent = count + '件';
 }
 
 function onOrderChanged(e) {
     var nodeList = nodeApp.querySelector('.list');
-    var nodeItems = nodeApp.querySelectorAll('.item');
-    var products = [];
-    for (var i = 0; i < nodeItems.length; i++) {
-        products.push(nodeItems[i]);
-    }
-    while (nodeList.firstChild) {
-        nodeList.firstChild.remove()
-    }
+
+    while (nodeList.firstChild) nodeList.firstChild.remove();
+
     if (e.target.value == '1') {
-        for (var i = 0; i < nodeItemsOrg.length; i++) {
-            nodeList.appendChild(nodeItemsOrg[i]);
-        }
+        for (var i = 0; i < nodeItemsOrg.length; i++) nodeList.appendChild(nodeItemsOrg[i]);
     } else if (e.target.value == '2') {
+        var products = [];
+        for (var i = 0; i < nodeItemsOrg.length; i++) products.push(nodeItemsOrg[i]);
         products.sort(function (a, b) {
             var priceA = parseInt(a.querySelector('.price span').textContent.replace(',', ''));
             var priceB = parseInt(b.querySelector('.price span').textContent.replace(',', ''));
             return priceA - priceB;
         });
-        for (var i = 0; i < products.length; i++) {
-            nodeList.appendChild(products[i]);
-        }
+        for (var i = 0; i < products.length; i++) nodeList.appendChild(products[i]);
     }
 }
 
