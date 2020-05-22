@@ -15,6 +15,15 @@ var app = new Vue({
             { name: 'Uriel<br>スマホケース', price: 980, image: 'images/04.jpg', delv: 0, isSale: true },
             { name: 'Ariel<br>スマホケース', price: 980, image: 'images/05.jpg', delv: 0, isSale: false },
             { name: 'Azrael<br>スマホケース', price: 1580, image: 'images/06.jpg', delv: 0, isSale: false }
-        ]
+        ],
+        showItem: true
+    },
+    methods: {
+        showExpression: function (product) {
+            return this.showSaleItem && this.showDelvFree ? product.isSale && product.delv == 0
+                : this.showSaleItem ? product.isSale
+                    : this.showDelvFree ? product.delv == 0
+                        : true;
+        }
     }
 });
