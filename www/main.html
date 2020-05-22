@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="list">
-                <div class="item" v-for="product in products" v-show="showExpression(product)">
+                <div class="item" v-for="product in filteredList">
                     <figure class="image">
                         <div class="status" v-show="product.isSale">SALE</div>
                         <img v-bind:src="product.image" alt="">
