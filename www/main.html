@@ -35,12 +35,12 @@
                     <figure class="image">
                         <div class="status" v-show="product.isSale">SALE</div>
                         <img v-bind:src="product.image" alt="">
-                        <figcaption>{{product.name}}</figcaption>
+                        <figcaption v-html="product.name"></figcaption>
                     </figure>
                     <div class="detail">
-                        <div class="price"><span>{{product.price}}</span>円（税込）</div>
+                        <div class="price"><span>{{product.price|number_format}}</span>円（税込）</div>
                         <div class="shipping-fee none" v-if="product.delv == 0">送料無料</div>
-                        <div class="shipping-fee" v-else>+送料{{product.delv}}円</div>
+                        <div class="shipping-fee" v-else>+送料{{product.delv|number_format}}円</div>
                     </div>
                 </div>
             </div>
