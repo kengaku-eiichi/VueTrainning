@@ -27,16 +27,23 @@ var app = new Vue({
     },
     computed: {
         filteredList: function () {
-            showExpression = this.showSaleItem && this.showDelvFree ? function (product) { return product.isSale && product.delv == 0 }
+            var sortedList = [];
+            for (var i = 0; i < this.products.length; i++) sortedList.push(this.products[i]);
+            switch (this.sortOrder) {
+                case 2:
+                    sortedList.sort(function (a, b) { return a.price - b.price; });
+                    break;
+            }
+            var showExpression = this.showSaleItem && this.showDelvFree ? function (product) { return product.isSale && product.delv == 0 }
                 : this.showSaleItem ? function (product) { return product.isSale }
                     : this.showDelvFree ? function (product) { return product.delv == 0 }
                         : function () { return true };
             this.count = 0;
             var filteredList = [];
-            for (var i = 0; i < this.products.length; i++) {
-                if (showExpression(this.products[i])) {
+            for (var i = 0; i < sortedList.length; i++) {
+                if (showExpression(sortedList[i])) {
                     this.count++;
-                    filteredList.push(this.products[i]);
+                    filteredList.push(sortedList[i]);
                 }
             }
             return filteredList;
