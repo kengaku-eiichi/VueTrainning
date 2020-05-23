@@ -13,9 +13,11 @@ var app = new Vue({
     },
     created: function () {
         $.ajax({
-            url: 'products.json',
+            url: 'products.js',
             type: 'GET',
-            dataType: 'json'
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'products'
         }).done(function (data, status, jqXHR) {
             app.products = data;
         }).fail(function (jqXHR, status, ex) {
