@@ -4,18 +4,31 @@ Vue.filter('number_format', function (val) {
 var app = new Vue({
     el: '#app',
     data: {
+        created: false,
         count: 0,
         showSaleItem: false,
         showDelvFree: false,
         sortOrder: 1,
-        products: [
-            { id: 1, name: 'Michael<br>スマホケース', price: 1580, image: 'images/01.jpg', delv: 0, isSale: true },
-            { id: 2, name: 'Raphael<br>スマホケース', price: 1580, image: 'images/02.jpg', delv: 0, isSale: true },
-            { id: 3, name: 'Gabriel<br>スマホケース', price: 1580, image: 'images/03.jpg', delv: 240, isSale: true },
-            { id: 4, name: 'Uriel<br>スマホケース', price: 980, image: 'images/04.jpg', delv: 0, isSale: true },
-            { id: 5, name: 'Ariel<br>スマホケース', price: 980, image: 'images/05.jpg', delv: 0, isSale: false },
-            { id: 6, name: 'Azrael<br>スマホケース', price: 1580, image: 'images/06.jpg', delv: 0, isSale: false }
-        ]
+        products: [],
+        isError: false,
+        message: ''
+    },
+    created: function () {
+        this.isError = false;
+        $.ajax({
+            url: '/api/products.js',
+            type: 'GET',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'products'
+        }).done(function (data, status, jqXHR) {
+            app.products = data;
+        }).fail(function (jqXHR, status, ex) {
+            app.isError = true;
+            app.message = '商品一覧の読み込みが失敗しました。' + ex.toString();
+        });
+
+        this.created = true;
     },
     methods: {
         showExpression: function (product) {
