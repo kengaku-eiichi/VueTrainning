@@ -16,7 +16,7 @@ var app = new Vue({
     created: function () {
         this.isError = false;
         $.ajax({
-            url: 'products.js',
+            url: '/api/products.js',
             type: 'GET',
             dataType: 'jsonp',
             jsonp: 'callback',
