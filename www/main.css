@@ -30,6 +30,14 @@ body {
     display: inline-block;
 }
 
+.error {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0.5em 1em;
+    background: #999;
+    color: #e00;
+}
+
 .list {
     display: flex;
     flex-wrap: wrap;

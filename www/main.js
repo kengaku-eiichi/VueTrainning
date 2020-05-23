@@ -9,9 +9,12 @@ var app = new Vue({
         showSaleItem: false,
         showDelvFree: false,
         sortOrder: 1,
-        products: []
+        products: [],
+        isError: false,
+        message: ''
     },
     created: function () {
+        this.isError = false;
         $.ajax({
             url: 'products.js',
             type: 'GET',
@@ -21,7 +24,8 @@ var app = new Vue({
         }).done(function (data, status, jqXHR) {
             app.products = data;
         }).fail(function (jqXHR, status, ex) {
-            console.log(status);
+            app.isError = true;
+            app.message = '商品一覧の読み込みが失敗しました。' + ex.toString();
         });
 
         this.created = true;
