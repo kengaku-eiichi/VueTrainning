@@ -7,6 +7,7 @@ var app = new Vue({
         message: ''
     },
     created: function () {
+        this.created = true;
         this.isError = false;
         $.ajax({
             url: '/api/products.js',
@@ -21,6 +22,13 @@ var app = new Vue({
             app.message = '商品一覧の読み込みが失敗しました。' + ex.toString();
         });
 
-        this.created = true;
     },
+    methods: {
+        onPriceDownClick: function (e) {
+            if (e.product.price <= 500) return;
+
+            e.product.price -= 100
+            if (e.product.price <= 500) e.product.price = 500;
+        }
+    }
 });
