@@ -2,7 +2,7 @@ products(
     [
         {
             "id": 1,
-            "name": "Michael<br>スマホケース",
+            "name": "Michael\nスマホケース",
             "price": 1580,
             "image": "images/products/01.jpg",
             "delv": 0,
@@ -10,7 +10,7 @@ products(
         },
         {
             "id": 2,
-            "name": "Raphael<br>スマホケース",
+            "name": "Raphael\nスマホケース",
             "price": 1580,
             "image": "images/products/02.jpg",
             "delv": 0,
@@ -18,7 +18,7 @@ products(
         },
         {
             "id": 3,
-            "name": "Gabriel<br>スマホケース",
+            "name": "Gabriel\nスマホケース",
             "price": 1580,
             "image": "images/products/03.jpg",
             "delv": 240,
@@ -26,7 +26,7 @@ products(
         },
         {
             "id": 4,
-            "name": "Uriel<br>スマホケース",
+            "name": "Uriel\nスマホケース",
             "price": 980,
             "image": "images/products/04.jpg",
             "delv": 0,
@@ -34,7 +34,7 @@ products(
         },
         {
             "id": 5,
-            "name": "Ariel<br>スマホケース",
+            "name": "Ariel\nスマホケース",
             "price": 980,
             "image": "images/products/05.jpg",
             "delv": 0,
@@ -42,7 +42,7 @@ products(
         },
         {
             "id": 6,
-            "name": "Azrael<br>スマホケース",
+            "name": "Azrael\nスマホケース",
             "price": 1580,
             "image": "images/products/06.jpg",
             "delv": 0,

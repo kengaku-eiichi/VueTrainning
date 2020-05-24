@@ -38,7 +38,7 @@
                     <figure class="image">
                         <div class="status" v-show="product.isSale">SALE</div>
                         <img v-bind:src="product.image" alt="">
-                        <figcaption v-html="product.name"></figcaption>
+                        <figcaption style="white-space: pre;">{{product.name}}</figcaption>
                     </figure>
                     <div class="detail">
                         <div class="price"><span>{{product.price|number_format}}</span>円（税込）</div>
