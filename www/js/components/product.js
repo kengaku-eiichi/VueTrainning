@@ -1,9 +1,10 @@
 Vue.component('product', {
     template: `
-        <div>
-            <span>{{product.name}}</span>：<span>{{product.price}}（円）</span>
-            <button v-on:click="onPriceDownClick">値下げする</button>
-        </div>`,
+        <tr>
+            <td>{{product.name}}</td>
+            <td style="text-align:right;">{{product.price}}（円）</td>
+            <td><button v-on:click="onPriceDownClick">値下げする</button></td>
+        </tr>`,
     props: ['product'],
     methods: {
         onPriceDownClick: function (e) {
