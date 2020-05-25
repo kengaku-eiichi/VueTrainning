@@ -15,7 +15,18 @@ Vue.component('product-list', {
             </div>
         </div>
     `,
-    props: ['condition', 'products', 'isError', 'message'],
+    data: function () {
+        return {
+            condition: {
+                showSaleItem: false,
+                showDelvFree: false,
+                sortOrder: 1,
+            },
+            result: [],
+            isError: false,
+            message: ''
+        }
+    },
     computed: {
         match: function () {
             return this.condition.showSaleItem && this.condition.showDelvFree ? function (product) { return product.isSale && product.delv == 0 }
@@ -23,19 +34,44 @@ Vue.component('product-list', {
                     : this.condition.showDelvFree ? function (product) { return product.delv == 0 }
                         : function () { return true };
         },
-        result: function () {
-            var result = [];
-            for (var i = 0; i < this.products.length; i++) {
-                if (this.match(this.products[i])) {
-                    result.push(this.products[i]);
+        computedCondition: function () {
+            return JSON.stringify(this.condition);
+        }
+    },
+    methods: {
+        search: function () {
+            var self = this;
+            self.isError = false;
+            $.ajax({
+                url: '/api/products.js',
+                type: 'GET',
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                jsonpCallback: 'products'
+            }).done(function (products, status, jqXHR) {
+                self.result.length = 0;
+                for (var i = 0; i < products.length; i++) {
+                    if (self.match(products[i])) {
+                        self.result.push(products[i]);
+                    }
                 }
-            }
-            switch (this.condition.sortOrder) {
-                case 2:
-                    result.sort(function (a, b) { return a.price - b.price; });
-                    break;
-            }
-            return result;
+                switch (self.condition.sortOrder) {
+                    case 2:
+                        self.result.sort(function (a, b) { return a.price - b.price; });
+                        break;
+                }
+            }).fail(function (jqXHR, status, ex) {
+                self.isError = true;
+                self.message = '商品一覧の読み込みが失敗しました。' + ex.toString();
+            });
+        }
+    },
+    created: function () {
+        this.search();
+    },
+    watch: {
+        computedCondition: function (newValue, oldValue) {
+            this.search();
         }
     }
 })
