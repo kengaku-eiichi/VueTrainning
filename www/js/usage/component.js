@@ -27,8 +27,8 @@ var app = new Vue({
         onPriceDownClick: function (e) {
             if (e.product.price <= 500) return;
 
-            e.product.price -= 100
-            if (e.product.price <= 500) e.product.price = 500;
+            var newPrice = e.product.price - 100;
+            e.product.price = newPrice < 500 ? 500 : newPrice;
         }
     }
 });
