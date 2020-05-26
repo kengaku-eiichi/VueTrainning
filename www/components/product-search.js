@@ -2,7 +2,8 @@ var productSearch = {
     template: `
         <div class="search">
             <div class="result">
-                検索結果 <span class="count">{{result.length}}件</span>
+                <div v-if="result.isError" class="error">{{result.message}}</div>
+                <template v-else>検索結果 <span class="count">{{result.list.length}}件</span></template>
             </div>
             <div class="condition">
                 <div class="target">

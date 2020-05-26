@@ -9,9 +9,8 @@ Vue.component('product-list', {
                 <h1 class="pageTitle">商品一覧</h1>
                 <product-search :condition="condition" :result="result"></product-search>
             </header>
-            <div v-if="isError" class="error">{{message}}</div>
-            <div v-if="result.length > 0" class="list">
-                <product v-for="product in result" :product="product" :key="product.id"></product>
+            <div v-if="result.list.length > 0" class="list">
+                <product v-for="product in result.list" :product="product" :key="product.id"></product>
             </div>
         </div>
     `,
@@ -22,9 +21,11 @@ Vue.component('product-list', {
                 showDelvFree: false,
                 sortOrder: 1,
             },
-            result: [],
-            isError: false,
-            message: ''
+            result: {
+                list: [],
+                isError: false,
+                message: ''
+            }
         }
     },
     computed: {
@@ -41,7 +42,7 @@ Vue.component('product-list', {
     methods: {
         search: function () {
             var self = this;
-            self.isError = false;
+            self.result.isError = false;
             $.ajax({
                 url: '/api/products.js',
                 type: 'GET',
@@ -49,20 +50,20 @@ Vue.component('product-list', {
                 jsonp: 'callback',
                 jsonpCallback: 'products'
             }).done(function (products, status, jqXHR) {
-                self.result.length = 0;
+                self.result.list = [];
                 for (var i = 0; i < products.length; i++) {
                     if (self.match(products[i])) {
-                        self.result.push(products[i]);
+                        self.result.list.push(products[i]);
                     }
                 }
                 switch (self.condition.sortOrder) {
                     case 2:
-                        self.result.sort(function (a, b) { return a.price - b.price; });
+                        self.result.list.sort(function (a, b) { return a.price - b.price; });
                         break;
                 }
             }).fail(function (jqXHR, status, ex) {
-                self.isError = true;
-                self.message = '商品一覧の読み込みが失敗しました。' + ex.toString();
+                self.result.isError = true;
+                self.result.message = '商品一覧の読み込みが失敗しました。' + ex.toString();
             });
         }
     },
