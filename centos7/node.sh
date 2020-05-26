@@ -6,6 +6,7 @@ yum info installed git || {
 
 nvm --version || {
     git clone git://github.com/creationix/nvm.git /opt/nvm
+    ln -snf /opt/nvm/nvm.sh /etc/profile.d/.
     source /opt/nvm/nvm.sh
     nvm --version
 
@@ -17,4 +18,4 @@ nvm --version || {
     npm install -g @vue/cli
     vue --version
 }
-nohup vue ui --host 0.0.0.0 --port 8000 &
+nohup vue ui --host 0.0.0.0 --port 8000 --headless --quiet >/dev/null 2>&1 &
