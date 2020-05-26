@@ -73,6 +73,6 @@ Vagrant.configure("2") do |config|
     timedatectl set-timezone Asia/Tokyo
     localectl set-keymap jp106
     yum -y install zip unzip
-    setenforce 0
+    source /vagrant/selinux.sh
   SHELL
 end
