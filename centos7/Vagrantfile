@@ -74,5 +74,7 @@ Vagrant.configure("2") do |config|
     localectl set-keymap jp106
     yum -y install zip unzip
     source /vagrant/selinux.sh
+    source /vagrant/nginx.sh
+    source /vagrant/node.sh
   SHELL
 end
