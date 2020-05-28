@@ -4,8 +4,9 @@ var app = new Vue({
         clickCount: 0
     },
     methods: {
-        onclick: function (e) {
+        onclick: function () {
             this.clickCount++;
+            console.log(arguments);
         }
     }
 });
