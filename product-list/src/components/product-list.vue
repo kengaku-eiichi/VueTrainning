@@ -59,9 +59,11 @@ export default {
       var self = this;
       self.result.isError = false;
       global.$.ajax({
-        url: "/api/products.json",
+        url: "/api/products.js",
         type: "GET",
-        dataType: "json"
+        dataType: "jsonp",
+        jsonp: "callback",
+        jsonpCallback: "products"
       })
         .done(function(products) {
           self.result.list = [];
@@ -78,10 +80,62 @@ export default {
               break;
           }
         })
-        .fail(function(jqXHR, status, ex) {
-          self.result.isError = true;
-          self.result.message =
-            "商品一覧の読み込みが失敗しました。" + ex.toString();
+        // .fail(function(jqXHR, status, ex) {
+        //   self.result.isError = true;
+        //   self.result.message =
+        //     "商品一覧の読み込みが失敗しました。" + ex.toString();
+        // })
+        .fail(function() {
+          self.result.list = [
+            {
+              id: 1,
+              name: "Michael\nスマホケース",
+              price: 1580,
+              image: require("./assets/images/01.jpg"),
+              delv: 0,
+              isSale: true
+            },
+            {
+              id: 2,
+              name: "Raphael\nスマホケース",
+              price: 1580,
+              image: require("./assets/images/02.jpg"),
+              delv: 0,
+              isSale: true
+            },
+            {
+              id: 3,
+              name: "Gabriel\nスマホケース",
+              price: 1580,
+              image: require("./assets/images/03.jpg"),
+              delv: 240,
+              isSale: true
+            },
+            {
+              id: 4,
+              name: "Uriel\nスマホケース",
+              price: 980,
+              image: require("./assets/images/04.jpg"),
+              delv: 0,
+              isSale: true
+            },
+            {
+              id: 5,
+              name: "Ariel\nスマホケース",
+              price: 980,
+              image: require("./assets/images/05.jpg"),
+              delv: 0,
+              isSale: false
+            },
+            {
+              id: 6,
+              name: "Azrael\nスマホケース",
+              price: 1580,
+              image: require("./assets/images/06.jpg"),
+              delv: 0,
+              isSale: false
+            }
+          ];
         });
     }
   },
