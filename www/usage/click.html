@@ -10,6 +10,7 @@
 <body>
     <div id="app">
         <button v-on:click="onclick">click this</button>
+        <button @click="clickCount = 0">reset</button>
         <p>click count: {{clickCount}}</p>
     </div>
     <script src="./click.js"></script>
