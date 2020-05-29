@@ -26,5 +26,5 @@ nvm --version || {
     vue -V
 }
 nohup vue ui --host 0.0.0.0 --port 8000 --headless --quiet >/dev/null 2>&1 &
-
-
+cd /git/VueTrainning/sample1 && yarn add vue
+cd /git/VueTrainning/product-list && yarn add vue
