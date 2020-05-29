@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>attrs</legend>
+            <input v-bind="attrs" v-model="attrs.value">
+            <div>v-once attrs.value is <span v-once>{{attrs.value}}</span></div>
+            <div>attrs.value is <span>{{attrs.value}}</span></div>
+        </fieldset>
+        <fieldset>
+            <legend>textContent</legend>
+            text1 is <span :text-content.prop="text1"></span>
+        </fieldset>
+        <fieldset>
+            <legend>v-bind:style</legend>
+            <div :style="{backgroundColor:'Yellow', fontWeight: 'bold'}">{backgroundColor:'Yellow', fontWeight: 'bold'}
+            </div>
+            <div :style="{'background-color':'Yellow', 'font-weight': 'bold'}">{'background-color':'Yellow',
+                'font-weight': 'bold'}</div>
+            <div :style="style1">:style="style1" style1 is {{style1}}</div>
+            <div :style="style2">:style="style2" style2 is {{style2}}</div>
+            <div :style="style3">:style="style3" style3 is {{style3}}</div>
+            <div :style="[style2,style3]">:style="[style2,style3]"</div>
+        </fieldset>
+        <fieldset>
+            vendor prefix
+            <a :style="{'tap-highlight-color':'Yellow'}" :href="url" target="_blank">{{url}}</a>
+        </fieldset>
+        <fieldset>
+            <legend>class</legend>
+            <div class="x" :class="class1">class1 is {{class1}}</div>
+            <div class="x" :class="class2">class2 is {{class2}}</div>
+            <div class="x" :class="[class1, class2]">class="x" :class="[class1, class2]"</div>
+        </fieldset>
+    </div>
+    <script src="./bind.js"></script>
+</body>
+
+</html>
