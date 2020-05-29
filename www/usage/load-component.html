@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <component1 :text1="text1" :text2="'text2'" :text4="text4"></component1>
+        <component2>load-component component2</component2>
+        <component3>
+            <h3 slot="header">load-component component3 header</h3>
+            <div>load-component component3 div</div>
+            <span slot="footer">load-component component3 span footer</span>
+            <div>load-component component3 div</div>
+            <a slot="footer">load-component component3 a footer</a>
+        </component3>
+    </div>
+    <script src="./components/component1.js"></script>
+    <script src="./load-component.js"></script>
+</body>
+
+</html>
