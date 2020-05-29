@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="onclick">add click count</button>
+        <button @click="onclick('argument')">call onclick with argument</button>
+        <button @click="onclick('argument',$event)">call onclick with argument and $event</button>
+        <button @click.once="onclick">call onclick once</button>
+        <button @click="clickCount = 0">reset</button>
+        <p>click count: {{clickCount}}</p>
+    </div>
+    <script src="./click.js"></script>
+</body>
+
+</html>
