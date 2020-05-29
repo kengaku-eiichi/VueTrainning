@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <fieldset>
+                <legend>input:text v-model.trim</legend>
+                <label>
+                    text1
+                    <input type="text" v-model.trim="text1">
+                </label><br>
+                <div> text1 is {{text1}} </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>input:text v-model.lazy</legend>
+                <label>
+                    text2
+                    <input type="text" v-model.lazy="text2">
+                </label><br>
+                <div> text2 is {{text2}} </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>textarea</legend>
+                <label>
+                    text3
+                    <textarea :value="text3.join('\n')" @input="text3=$event.target.value.split('\n')"></textarea>
+                </label><br>
+                <div> text3 is {{text3}} </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>input:radio</legend>
+                <label>
+                    <input type="radio" value="1" v-model.number="sex">男性
+                </label>
+                <label>
+                    <input type="radio" value="2" v-model.number="sex">女性
+                </label>
+                <label>
+                    <input type="radio" value="null" v-model.number="sex">その他
+                </label><br>
+                <div> sex is {{sex}} </div>
+                <div> sexText is {{sexText}} </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>input:checkbox</legend>
+                <label>
+                    <input type="checkbox" v-model="checked">checked
+                </label>
+                <div> checked is {{checked}} </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>input:checkbox</legend>
+                <label>
+                    <input type="checkbox" v-model="flag" true-value="1" false-value="0">flag
+                </label>
+                <div> flag is {{flag}} </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>input:checkbox</legend>
+                <label>
+                    <input type="checkbox" value="1" v-model="multiCheck">check1
+                </label>
+                <label>
+                    <input type="checkbox" value="2" v-model="multiCheck">check2
+                </label>
+                <label>
+                    <input type="checkbox" value="3" v-model="multiCheck">check3
+                </label>
+                <div>multiCheck is {{multiCheck}}</div>
+            </fieldset>
+
+            <fieldset>
+                <legend>select</legend>
+                <select v-model.number="selectedValue">
+                    <option :value="null">please select</option>
+                    <option value="1">select1</option>
+                    <option value="2">select2</option>
+                    <option value="3">select3</option>
+                </select>
+                <div>selectedValue is {{selectedValue}}</div>
+            </fieldset>
+
+            <fieldset>
+                <legend>select[multiple]</legend>
+                <select v-model.number="multiSelect" multiple>
+                    <option :value="null">please select</option>
+                    <option value="1">select1</option>
+                    <option value="2">select2</option>
+                    <option value="3">select3</option>
+                </select>
+                <div>multiSelect is {{multiSelect}}</div>
+            </fieldset>
+        </form>
+    </div>
+    <script src="./model.js"></script>
+</body>
+
+</html>
