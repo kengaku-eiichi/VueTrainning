@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form @submit.prevent>
+            <button>submit</button>
+            <label>
+                @keyup.27="clear"
+                <input type="text" @keyup.27="clear1" v-model="text1">
+            </label><br>
+            <label>
+                @keyup.esc="clear"
+                <input type="text" @keyup.esc="clear2" v-model="text2">
+            </label><br>
+            <label>
+                message:
+                <textarea @keyup.alt.72="help" v-model="text3"></textarea>
+            </label><br>
+        </form>
+        <div @click.right="rightClick">
+            right click here
+        </div>
+        <div @click.ctrl.exact.right="ctrlRightClick">
+            ctrl + right click here
+        </div>
+    </div>
+    <script src="./event.js"></script>
+</body>
+
+</html>
