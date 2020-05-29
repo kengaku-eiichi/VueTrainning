@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>v-for item in items</legend>
+            <button @click="reduce">値下げ</button>
+            <table class="table">
+                <th>No.</th>
+                <th>ISBN</th>
+                <th>書籍名</th>
+                <th>価格</th>
+                <tr v-for="(book, i) in books">
+                    <td>{{i}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.price}}円</td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>v-for variable in number</legend>
+            <select v-model="month">
+                <option :value="null">月を選択…</option>
+                <option v-for="m in 12" value.number="m">{{m}}月</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>array changed but no rendered</legend>
+            <ul>
+                <li v-for="v in array">{{v}}</li>
+            </ul>
+            <button @click="arrayChange">arrayChange</button>
+            array:{{array}}
+        </fieldset>
+        <fieldset>
+            <legend>array overwrite</legend>
+            <ul>
+                <li v-for="v in array2">{{v}}</li>
+            </ul>
+            <button @click="arrayOverwrite">arrayOverwrite</button>
+            array2:{{array2}}
+        </fieldset>
+    </div>
+    <script src="./for.js"></script>
+</body>
+
+</html>
