@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>v-hightlight bind</legend>
+            <span v-hightlight="color">ここだけ</span>hightlightされる
+            <label v-for="c in colors">
+                <input type="radio" v-model="color" :value="c">{{c}}
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>v-hightlight2 inserted</legend>
+            <span v-hightlight2="color">ここだけ</span>hightlightされる
+            <label v-for="c in colors">
+                <input type="radio" v-model="color" :value="c">{{c}}
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>v-hightlight3 update</legend>
+            <span v-hightlight3="color">ここだけ</span>hightlightされる
+            <label v-for="c in colors">
+                <input type="radio" v-model="color" :value="c">{{c}}
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>v-hightlight4 componentUpdated</legend>
+            <span v-hightlight4="color">ここだけ</span>hightlightされる
+            <label v-for="c in colors">
+                <input type="radio" v-model="color" :value="c">{{c}}
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>v-hightlight5 unbind</legend>
+            <span v-hightlight5="color">ここだけ</span>hightlightされる
+            <label v-for="c in colors">
+                <input type="radio" v-model="color" :value="c">{{c}}
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>v-hightlight6 bind mouse event</legend>
+            <span v-hightlight6="color">ここだけ</span>hightlightされる
+            <label v-for="c in colors">
+                <input type="radio" v-model="color" :value="c">{{c}}
+            </label>
+        </fieldset>
+    </div>
+    <script src="./directive.js"></script>
+</body>
+
+</html>
