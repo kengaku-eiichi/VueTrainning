@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> 速習 Vue.js </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@2.2.15/dist/vee-validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vee-validate@2.2.15/dist/locale/ja.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fieldset>
+            <legend>v-validate required|url</legend>
+            <form>
+                <label>
+                    URL:
+                    <input v-validate="'required|url'" name="url" data-vv-as="url">
+                    <span>{{errors.first('url')}}</span>
+                </label>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>v-validate email</legend>
+            <form>
+                <label>
+                    email:
+                    <input v-validate="'email'" name="email" data-vv-as="email">
+                    <span>{{errors.first('email')}}</span>
+                </label>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>v-validate max:8</legend>
+            <form>
+                <label>
+                    user_id:
+                    <input v-validate="{max:8}" name="user_id" data-vv-as="user_id">
+                    <span>{{errors.first('user_id')}}</span>
+                </label>
+            </form>
+        </fieldset>
+    </div>
+
+    <script src="./plugin.js"></script>
+</body>
+
+</html>
